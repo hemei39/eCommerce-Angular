@@ -1,0 +1,31 @@
+
+#categories {
+    overflow: hidden;
+    background-color:  #0073a6;
+    height: 50px;
+    line-height: 50px;
+
+}
+#categories li {
+    float: left;
+    padding: 0px 15px;
+}
+#categories li a{
+    display: block;
+    height: 50px;
+    padding: 0px 5px;
+}
+#categories li a:link {
+    color: #fff;
+}
+#categories li a:visited{
+    color: #fff;
+}
+
+#categories li a:hover {
+    color: #0073a6;
+    background-color: #fff;
+}
+
+
+

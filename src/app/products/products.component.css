@@ -1,0 +1,26 @@
+#products {
+    display: grid;
+    grid-template-columns: 33% 33% 33%;   
+}
+
+#products li{
+    height: 180px;    
+}
+
+.productName{
+    color: #0060a9;
+}
+
+.price{
+    color: #333;
+}
+
+.cart{
+    background-color:#2a6293;
+    color: #fff;
+    display: inline-block;
+    height: 30px;
+    line-height: 30px;
+    width: 100px;
+    text-align: center;
+}

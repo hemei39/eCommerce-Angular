@@ -1,0 +1,12 @@
+<div>
+  <ul id="products">
+    <li *ngFor="let p of products">
+      <a routerLink="/product/{{p.productID}}">
+        <div class="productName">{{p.productName}}</div>
+        <div class="price">{{p.unitPrice}}</div>
+      </a>
+      <p></p>
+      <button (click)="addToCart()" class="cart">Add to Cart</button>
+    </li>
+  </ul>
+</div>  
