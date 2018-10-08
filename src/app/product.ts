@@ -8,6 +8,6 @@ export class Product {
 	unitsInStock: number;
 	unitsOnOrder: number;
 	reorderLevel: number;
-	discontinued: boolean
+	discontinued: boolean;
 
 }
