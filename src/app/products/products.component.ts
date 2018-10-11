@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../product.service';
+import { CartService } from '../cart.service';
 import { Product } from '../product';
+import { Cart } from '../cart';
 import { ActivatedRoute } from '@angular/router';
 import { v4 as uuid } from 'uuid';
+
 
 
 @Component({
@@ -13,8 +16,11 @@ import { v4 as uuid } from 'uuid';
 export class ProductsComponent implements OnInit {
 
   products: Product[];
-  constructor(private productService: ProductService, private route: ActivatedRoute) {
-      }
+  itemCount: number;
+
+  constructor(private productService: ProductService, 
+    private cartService: CartService,
+    private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.route.params.subscribe(val => {
@@ -29,15 +35,25 @@ export class ProductsComponent implements OnInit {
     .subscribe(p=>this.products=p);
   }
 
-  addToCart(): void {
-    let tempId = localStorage.getItem('tempId');
-    if (tempId && tempId.indexOf('temp') == 0)
+  addToCart(productID: number, unitPrice: number): void {
+    let tmpusr = localStorage.getItem('tmpusr');
+    if (!tmpusr || tmpusr.indexOf('tmpusr') < 0)
     {
-      console.log('get uid: ', tempId);
+      tmpusr = 'tmpusr' + uuid();
+      localStorage.setItem('tmpusr', tmpusr);
     }
-    else
-    {
-      localStorage.setItem('tempId','temp'+ uuid());
+
+    let cart: Cart = {
+      Username: tmpusr,
+      ProductID: productID,
+      UnitPrice: unitPrice,
+      Quantity: 1,
+      Discount: 0
     }
+    
+    this.cartService.addToCart(cart)
+    .subscribe(c=>this.itemCount=c);
+
+    
   }
 }

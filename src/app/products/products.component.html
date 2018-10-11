@@ -6,7 +6,9 @@
         <div class="price">{{p.unitPrice}}</div>
       </a>
       <p></p>
-      <button (click)="addToCart()" class="cart">Add to Cart</button>
+      <button (click)="addToCart(p.productID, p.unitPrice)" class="cart">Add to Cart</button>
     </li>
   </ul>
-</div>  
+</div> 
+
+
